@@ -1,4 +1,5 @@
 import React, {Fragment} from "react"
+import {Link} from "react-router-dom"
 import { Section } from "react-bulma-components"
 import Comments from "./Comments"
 import BlogPostTitle from "./BlogPostTitle"
@@ -6,14 +7,16 @@ import BlogPostTitle from "./BlogPostTitle"
 
 const BlogPost = props => {
 	const { blogPost, loggedInUser, singlePost} = props
-    const { title, username, content, category, comments } = blogPost
+    const { title, username, content, category, comments, _id } = blogPost
     const showAddComment = username !== loggedInUser
-    const showEditDelete = !showAddComment
+    const showEditDelete = !showAddComment && singlePost
 	
 	return (
         <Fragment>
             <Section className="content">
-                    <BlogPostTitle title={title} showEditDelete={showEditDelete} / >
+                    <Link to={`/posts/${_id}`}>
+                        <BlogPostTitle title={title} showEditDelete={showEditDelete} />
+                    </Link>
                     <p>{username}</p>
                     {category && <p>Category: {category}</p>}
                     <p>{content}</p>

@@ -9,7 +9,7 @@ const Comments = props => {
 		<div >		
             <div className="level">
                 <Heading className="level-left">Comments</Heading>
-                {showAddComment && (<Button className="level-right" notification color="info">Add Comment</Button>)}
+                {showAddComment && (<Button className="level-right" notification="true" color="info">Add Comment</Button>)}
             </div>	
             {comments.map(comment => (                                    
                 <Comment key={comment._id} comment={comment} />                                    
